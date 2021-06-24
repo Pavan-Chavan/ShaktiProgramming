@@ -1,0 +1,26 @@
+main(){
+	>> if data recieved from user in x and y (x= 10001 y=010020)
+		put it in q
+	>> if currProStatus is 1 then pop from q and store in currTime currCom 
+		currWei CurrSTime  =>1 means last processor is done
+		and make currProStatus 0
+	
+	>> if currtime is less than 5 min from system time and currFerStatus is 1
+		>> currFerStatus make it 0
+		>> turn on the pump to get some water to plant
+		>> call setReturnValve()
+		>> call makeFertilizerReady(currCom,currWei)
+		>> then call fertilizerFlowrate(currSTime) which set the stepper moter
+			value to outlet from fertilizer mixer
+		>> make currFer status is 1 means we have set fertilizer mixer for
+			current values 
+			
+	>> if ststem time is equal to currTime 
+		>> turn on outletOfFirtilizerMixer 
+		>> put currTime and currSTime in prevCurrTime and prevSTime
+			and set currProStatus is 1
+	>> if system time is equal to PrevCurrTime+PrevCurrSTime then turn off
+			outletOfFirtilizerMixer 
+		
+
+}
