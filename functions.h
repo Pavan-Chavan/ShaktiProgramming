@@ -8,8 +8,8 @@
 #define HIGH_outletOfFertilizerMixer
 #define LOW_outletOfFertilizerMixer 
 #define LOW_WaterPump 0x00000000
-#define HIGH_WaterPump 0x00000001
-#define inletFlowSensor //need to set which pin is connected to which device
+#define HIGH_WaterPump 0xFFFFFFFE
+#define inletFlowSensor //need to sent which pin is connected to which device
 #define outletFlowSensor
 #define com1FlowSensor
 #define HIGH_inletOfFertilizerMixer
@@ -32,7 +32,7 @@ void push(int s)
         temp->data=s;
         front=rear=temp;
     }
-    else    
+    else
     {
         temp->data=s;
         rear->next=temp;
@@ -47,7 +47,7 @@ int pop()
 }
 int isPumpOn()
 {
-    if(GPIO_DATA_REG & 0x00000001==0x00000001)
+    if((GPIO_DATA_REG & 0x00000001)==0x00000001)
     {
       return  1;
     }
@@ -83,10 +83,12 @@ int systemTime()
     if time is 10:20AM u have to return 1020
     ser varible name as per coding standard  */
 }
-void digitalWrite(int PinNo)
+void digitalWrite(int STATUS,int PinNo)
 {
+    if(STATUS==1)
      write_word(GPIO_DATA_REG, PinNo | GPIO_DATA_REG);
-     
+     else
+     write_word(GPIO_DATA_REG, PinNo & GPIO_DATA_REG);
     /* write a code to turn on or turn off the pin
     first parameter is HIGH/LOW which indicate 1/0
     second parameter indicates pin no.
