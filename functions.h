@@ -1,8 +1,19 @@
 #include<stdio.h>
+#include "platform.h"
+#include "gpio.h"
+#include "utils.h"
 
 #define HIGH 1
 #define LOW 0
-
+#define HIGH_outletOfFertilizerMixer
+#define LOW_outletOfFertilizerMixer 
+#define LOW_WaterPump 0x00000000
+#define HIGH_WaterPump 0x00000001
+#define inletFlowSensor //need to sent which pin is connected to which device
+#define outletFlowSensor
+#define com1FlowSensor
+#define HIGH_inletOfFertilizerMixer
+#define LOW_inletOfFertilizerMixer
 struct Node *front=NULL,*rear=NULL;
 
 struct Node
@@ -36,11 +47,27 @@ int pop()
 }
 int isPumpOn()
 {
+    if(GPIO_DATA_REG & 0x00000001==0x00000001)
+    {
+      return  1;
+    }
+    else 
+    {
+        return 0;
+    }
     //return 1 is pump is on
     // return 0 if pump is off
 }
 int isEmpty()
 {
+    if(front==rear)
+    {
+      return 1;
+    }
+    else
+    {
+      return 0;
+    }
     //return 1 is queue is empty
     //return 0 if queue is not empty
 }
@@ -56,8 +83,10 @@ int systemTime()
     if time is 10:20AM u have to return 1020
     ser varible name as per coding standard  */
 }
-void digitalWrite(int STATUS,int PINNO)
+void digitalWrite(int PinNo)
 {
+     write_word(GPIO_DATA_REG, PinNo | GPIO_DATA_REG);
+     
     /* write a code to turn on or turn off the pin
     first parameter is HIGH/LOW which indicate 1/0
     second parameter indicates pin no.
