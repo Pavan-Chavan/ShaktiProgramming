@@ -9,7 +9,7 @@
 #define LOW_outletOfFertilizerMixer 
 #define LOW_WaterPump 0x00000000
 #define HIGH_WaterPump 0x00000001
-#define inletFlowSensor //need to sent which pin is connected to which device
+#define inletFlowSensor //need to set which pin is connected to which device
 #define outletFlowSensor
 #define com1FlowSensor
 #define HIGH_inletOfFertilizerMixer
