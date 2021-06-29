@@ -9,11 +9,20 @@
 #define LOW_outletOfFertilizerMixer 
 #define LOW_WaterPump 0x00000000
 #define HIGH_WaterPump 0xFFFFFFFE
-#define inletFlowSensor //need to sent which pin is connected to which device
-#define outletFlowSensor
+#define inletFlowSensor 0x41200//need to sent which pin is connected to which device
+#define outletFlowSensor 0x41204
 #define com1FlowSensor
 #define HIGH_inletOfFertilizerMixer
 #define LOW_inletOfFertilizerMixer
+#define ON_MixerMotor 
+#define OFF_MixerMotorOff
+#define HIGH_inletSVOfMixer
+#define LOW_ inletSVOfMixer
+#define HIGH_Comp1SV
+#define LOW_Comp1SV
+
+
+
 struct Node *front=NULL,*rear=NULL;
 
 struct Node
