@@ -1,0 +1,78 @@
+<html>
+	<head>
+	</head>
+    <body>
+        <h2>Control Panle For Sand Filter</h2>
+        <form action='rec.php' method='post' autocomplete="on">
+            <table style="width:45%">
+                <tr>
+                    <th> </th>
+                    <th>Time</th>
+                    <th>Compartment No.</th>
+                    <th>Slot time</th>
+                    <th>Weight</th>
+                </tr>
+                <tr>
+                    <td>Slot 1</td>
+                    <td> <input type="text" id="Slot1_Time" name="Slot1_Time"></td>
+                    <td><select id="Slot1_Comp_No" name="Slot1_Comp_No">
+                            <option value="00">0</option>
+                            <option value="01">1</option>
+                            <option value="02">2</option>
+                        </select></td>
+                    <td> <input type="text" id="Slot1_Slot_Time" name="Slot1_Slot_Time"></td>
+                    <td> <input type="text" id="Weight" name="Weight"></td>
+                </tr>
+                <tr>
+                    <td>Slot 2</td>
+                    <td> <input type="text" id="Slot2_Time" name="Slot2_Time"></td>
+                    <td><select id="Slot2_Comp_No" name="Slot2_Comp_No">
+                            <option value="00">0</option>
+                            <option value="01">1</option>
+                            <option value="02">2</option>
+                        </select></td>
+                    <td> <input type="text" id="Slot2_Slot_Time" name="Slot2_Slot_Time"></td>
+                    <td> <input type="text" id="Weight" name="Weight"></td>
+                </tr>
+                <tr>
+                    <td>Slot 3</td>
+                    <td><input type="text" id="Slot3_Time" name="Slot3_Time"></td>
+                    <td><select id="Slot3_Comp_No" name="Slot3_Comp_No">
+                            <option value="00">0</option>
+                            <option value="01">1</option>
+                            <option value="02">2</option>
+                        </select></td>
+                    <td> <input type="text" id="Slot3_Slot_Time" name="Slot3_Slot_Time"></td>
+                    <td> <input type="text" id="Weight" name="Weight"></td>
+                </tr>
+            </table><br>
+        
+        <input type="button" value="Create Slot"></button>
+        <button type="submit"> submit</button>
+        <button type="reset"  value="rest">reset</button>
+        <input type="button" value="Start Pump" id="status" name="status"><br><br>
+        <b>Emergency ON/OFF</b>: 
+        <input type="submit" name="On_button" value="ON">
+        <input type="submit" name="Off_button" value="OFF"><br> 
+            
+        </form>
+        
+        <script>
+            const button = document.querySelector('#status');
+            button.addEventListener('click', updateButton);
+            function updateButton() 
+                {
+                    if (button.value === 'Start Pump') 
+                    {
+                    button.value = 'Stop Pump';
+                    } 
+                    else 
+                    {
+                    button.value = 'Start Pump';
+                    }
+                }
+        </script>
+
+
+    </body>
+</html>
